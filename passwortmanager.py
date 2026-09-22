@@ -47,7 +47,7 @@ while running:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN and xy == 1:
-                    spieler2 = txt
+                    datei = txt
                     asking = False
                 elif event.key == pygame.K_BACKSPACE:
                     txt = txt[:-1]
@@ -63,8 +63,77 @@ while running:
         pygame.display.flip()
         clock.tick(FPS)
     datei = txt
-    print(read_txt_to_list(datei))
-    running = False
+    passwörter = read_txt_to_list(datei)
+    keyasking = True
+    txt = "Wie ist dein erster Schlüssel?"
+    xy = 0
+    while keyasking:
+        screen.fill(BLACK)
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN and xy == 1:
+                    key1 = txt
+                    keyasking = False
+                elif event.key == pygame.K_BACKSPACE:
+                    txt = txt[:-1]
+                else:
+                    if xy == 0:
+                        txt = event.unicode
+                        xy = 1
+                    else:
+                        txt += event.unicode
 
+        text_surface = font.render(txt, True, WHITE)
+        screen.blit(text_surface, (width//4, height//2))
+        pygame.display.flip()
+        clock.tick(FPS)
+    txt = "Wie ist dein zweiter Schlüssel?"
+    xy = 0
+    keyasking = True
+    while keyasking:
+        screen.fill(BLACK)
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN and xy == 1:
+                    key2 = txt
+                    keyasking = False
+                elif event.key == pygame.K_BACKSPACE:
+                    txt = txt[:-1]
+                else:
+                    if xy == 0:
+                        txt = event.unicode
+                        xy = 1
+                    else:
+                        txt += event.unicode
+
+        text_surface = font.render(txt, True, WHITE)
+        screen.blit(text_surface, (width//4, height//2))
+        pygame.display.flip()
+        clock.tick(FPS)
+    txt = f"Welches der 1 - {len(passwörter)} Passwörter möchtest du sehen?"ttt
+    xy = 0
+    working = True
+    while working:
+        screen.fill(BLACK)
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN and xy == 1:
+                    work = txt
+                    working = False
+                elif event.key == pygame.K_BACKSPACE:
+                    txt = txt[:-1]
+                else:
+                    if xy == 0:
+                        txt = event.unicode
+                        xy = 1
+                    else:
+                        txt += event.unicode
+
+        text_surface = font.render(txt, True, WHITE)
+        screen.blit(text_surface, (width//4, height//2))
+        pygame.display.flip()
+        clock.tick(FPS)
+    running = False
+pygame.quit()
 
 
