@@ -82,7 +82,10 @@ while running:
                         xy = 1
                     else:
                         txt += event.unicode
-
+		try:
+        	 txt = int(txt)
+        except ValueError:
+        	txt= "dies ist keine Zahl"
         text_surface = font.render(txt, True, WHITE)
         screen.blit(text_surface, (width//4, height//2))
         pygame.display.flip()
@@ -105,11 +108,16 @@ while running:
                         xy = 1
                     else:
                         txt += event.unicode
+        try:
+            txt = int(txt)
+        except ValueError:
+        	txt= "dies ist keine Zahl"
 
         text_surface = font.render(txt, True, WHITE)
         screen.blit(text_surface, (width//4, height//2))
         pygame.display.flip()
         clock.tick(FPS)
+    
     txt = f"Welches der 1 - {len(passwörter)} Passwörter möchtest du sehen?"ttt
     xy = 0
     working = True
