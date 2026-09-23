@@ -72,7 +72,6 @@ while running:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN and xy == 1:
-                    key1 = txt
                     keyasking = False
                 elif event.key == pygame.K_BACKSPACE:
                     txt = txt[:-1]
@@ -90,6 +89,7 @@ while running:
         screen.blit(text_surface, (width//4, height//2))
         pygame.display.flip()
         clock.tick(FPS)
+    key1 = txt % 89
     txt = "Wie ist dein zweiter Schlüssel?"
     xy = 0
     keyasking = True
@@ -98,7 +98,6 @@ while running:
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN and xy == 1:
-                    key2 = txt
                     keyasking = False
                 elif event.key == pygame.K_BACKSPACE:
                     txt = txt[:-1]
@@ -117,6 +116,7 @@ while running:
         screen.blit(text_surface, (width//4, height//2))
         pygame.display.flip()
         clock.tick(FPS)
+    key2 = txt % 89
     
     txt = f"Welches der 1 - {len(passwörter)} Passwörter möchtest du sehen?"ttt
     xy = 0
