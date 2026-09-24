@@ -117,7 +117,9 @@ while running:
         pygame.display.flip()
         clock.tick(FPS)
     key2 = txt % 89
-    
+    zugänge = []
+    for i in range(0, (len{passwörter}-1), 2):
+        
     txt = f"Welches der 1 - {len(passwörter)} Passwörter möchtest du sehen?"ttt
     xy = 0
     working = True
