@@ -36,13 +36,60 @@ text_surface = font.render("Pygame", True, RED)
 text_rect = text_surface.get_rect(center=(width // 2, height // 2))# textfeld erstellen
 screen.fill(BLACK)
 clock = pygame.time.Clock()
+def get_passwort:
+	zugänge = []
+    for i in range(0, (len{passwörter}-1), 2):
+        wort = []
+        zeile = list(passwörter[i])
+        for zeichen in zeile[:]:
+            s = ord(zeichen)
+            d = (s*key1 +key2)%1.114.111
+            e = chr(d)
+            wort.append(e)
+        zugänge.join(wort)
+    txt = f"Welches der 1 - {len(passwörter)} Passwörter möchtest du sehen?"ttt
+    xy = 0
+    													#welches passwort
+    working = True
+    while working:
+        screen.fill(BLACK)
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN and xy == 1:
+                    work = txt
+                    working = False
+                elif event.key == pygame.K_BACKSPACE:
+                    txt = txt[:-1]
+                else:
+                    if xy == 0:
+                        txt = event.unicode
+                        xy = 1
+                    else:
+                        txt += event.unicode
+		try:
+        	txt = int(txt)
+        except ValueError:
+        	txt= "dies ist keine Zahl"
+        text_surface = font.render(txt, True, WHITE)
+        screen.blit(text_surface, (width//4, height//2))
+        pygame.display.flip()
+        clock.tick(FPS)
+    welches = int(txt)    
+    wort = []
+    zeile = list(passwörter[welches])
+    for zeichen in zeile[:]:
+        s = ord(zeichen)
+        d = (s*key1 +key2)%1.114.111
+        e = chr(d)
+        wort.append(e)
+    txt = "".join(wort)
 running = True
 while running:
     
     txt = "Wie heißt deine Datei?"
     xy = 0
     asking = True
-    while asking:								#für spieler 1 der Name neu
+    while asking:								#dateiabfrage
         screen.fill(BLACK)
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
@@ -67,6 +114,7 @@ while running:
     keyasking = True
     txt = "Wie ist dein erster Schlüssel?"
     xy = 0
+    															#1.keyasking
     while keyasking:
         screen.fill(BLACK)
         for event in pygame.event.get():
@@ -93,6 +141,7 @@ while running:
     txt = "Wie ist dein zweiter Schlüssel?"
     xy = 0
     keyasking = True
+    													#2.keyasking
     while keyasking:
         screen.fill(BLACK)
         for event in pygame.event.get():
@@ -129,6 +178,7 @@ while running:
         zugänge.join(wort)
     txt = f"Welches der 1 - {len(passwörter)} Passwörter möchtest du sehen?"ttt
     xy = 0
+    													#welches passwort
     working = True
     while working:
         screen.fill(BLACK)
@@ -145,7 +195,33 @@ while running:
                         xy = 1
                     else:
                         txt += event.unicode
-
+		try:
+        	txt = int(txt)
+        except ValueError:
+        	txt= "dies ist keine Zahl"
+        text_surface = font.render(txt, True, WHITE)
+        screen.blit(text_surface, (width//4, height//2))
+        pygame.display.flip()
+        clock.tick(FPS)
+    welches = int(txt)    
+    wort = []
+    zeile = list(passwörter[welches])
+    for zeichen in zeile[:]:
+        s = ord(zeichen)
+        d = (s*key1 +key2)%1.114.111
+        e = chr(d)
+        wort.append(e)
+    txt = "".join(wort)
+    													#zeige passwort
+    show = True
+    while show:
+        screen.fill(BLACK)
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                	show = False
+                elif event.key == pygame.K_BACKSPACE:
+                    get_passwort
         text_surface = font.render(txt, True, WHITE)
         screen.blit(text_surface, (width//4, height//2))
         pygame.display.flip()
