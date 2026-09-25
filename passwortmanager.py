@@ -89,7 +89,7 @@ while running:
         screen.blit(text_surface, (width//4, height//2))
         pygame.display.flip()
         clock.tick(FPS)
-    key1 = txt % 1114111
+    key1 = txt % 1.114.111
     txt = "Wie ist dein zweiter Schlüssel?"
     xy = 0
     keyasking = True
@@ -116,15 +116,17 @@ while running:
         screen.blit(text_surface, (width//4, height//2))
         pygame.display.flip()
         clock.tick(FPS)
-    key2 = txt % 1114111
+    key2 = txt % 1.114.111
     zugänge = []
     for i in range(0, (len{passwörter}-1), 2):
-        wort = list(passwörter[i])
-		newwort = []
-		for zeichen in wort:
-			d = ord(zeichen)
-			e = (d*key1)+key2
-			newwort.append(e)
+        wort = []
+        zeile = list(passwörter[i])
+        for zeichen in zeile[:]:
+            s = ord(zeichen)
+            d = (s*key1 +key2)%1.114.111
+            e = chr(d)
+            wort.append(e)
+        zugänge.join(wort)
     txt = f"Welches der 1 - {len(passwörter)} Passwörter möchtest du sehen?"ttt
     xy = 0
     working = True
